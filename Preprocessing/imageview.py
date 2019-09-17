@@ -7,13 +7,14 @@ Created on Sat Aug 31 19:41:26 2019
 import sys
 import glob
 import cv2
+import os
 icount=0
 for img in glob.glob('*.jpg'):
     image = cv2.imread(img)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     #cv2.imshow('Original image1',image)  
     #cv2.imshow('Original image',gray)
-    print(gray.shape[0])
+    #print(gray.shape[0])
     for i in range(gray.shape[0]):
        for j in range(gray.shape[1]):
            pixel =gray[ i, j]
@@ -31,8 +32,8 @@ for img in glob.glob('*.jpg'):
            else:
                gray[i,j]=0
 #cv2.imshow('Gray image', gray)
-               
-    cv2.imwrite('preprocessed'+img+'.jpg',gray)            
+    path = '../Preprocessing/Preprocessed/'         
+    cv2.imwrite(str(path)+img,gray)            
 #cv2.waitKey(0)
 #cv2.destroyAllWindows() 
     
